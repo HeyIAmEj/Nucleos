@@ -11,6 +11,7 @@ import javax.persistence.TypedQuery;
 import br.com.nucleos.controller.Criptografia;
 import br.com.nucleos.model.Doadores;
 import br.com.nucleos.model.Empresas;
+import br.com.nucleos.model.Voluntariar;
 
 public class DoadoresDAO {
 
@@ -18,7 +19,7 @@ public class DoadoresDAO {
 	private EntityManager em = factory.createEntityManager();
 
 	public Doadores doadoresAuth(String email, String senha) {
-		senha =  Criptografia.criptografar(senha);
+		senha = Criptografia.criptografar(senha);
 
 		em.getTransaction().begin();
 		try {
@@ -33,10 +34,9 @@ public class DoadoresDAO {
 			return null;
 		}
 	}
-	
-	
+
 	public boolean doadoresSearch(String cpf, String email, String senha) {
-		senha =  Criptografia.criptografar(senha);
+		senha = Criptografia.criptografar(senha);
 		System.out.println("chegou");
 		em.getTransaction().begin();
 		try {
@@ -58,7 +58,7 @@ public class DoadoresDAO {
 			return false;
 		}
 	}
-	
+
 	public Doadores doadoresUpdate(Doadores doadoress, String nome, String sobrenome, String bairro, String telefone) {
 		Doadores doadores = null;
 		try {
@@ -72,14 +72,13 @@ public class DoadoresDAO {
 			doadores.setSobrenome(sobrenome);
 			doadores.setBairro(bairro);
 			doadores.setCelular(telefone);
-			
+
 			em.persist(doadores);
 			em.getTransaction().commit();
 
-			
 			em.close();
 			factory.close();
-			
+
 			return doadores;
 		} catch (NoResultException e) {
 			return doadores;
@@ -120,7 +119,6 @@ public class DoadoresDAO {
 		}
 	}
 
-	
 	public boolean inserirDoador(Doadores doadores) {
 		try {
 			em.getTransaction().begin();
@@ -135,9 +133,9 @@ public class DoadoresDAO {
 		}
 
 	}
-	
-	public boolean atualizarInfoBasicaDoador(Doadores doadores, String novoNome, 
-			String novoSobrenome, String novoCpf, String novaLocalizacao) {
+
+	public boolean atualizarInfoBasicaDoador(Doadores doadores, String novoNome, String novoSobrenome, String novoCpf,
+			String novaLocalizacao) {
 		try {
 			em.getTransaction().begin();
 			doadores.setNome(novoNome);
@@ -154,9 +152,9 @@ public class DoadoresDAO {
 			return false;
 		}
 	}
-	
-	public boolean atualizarInfoContatoDoador(Doadores doadores, String novoCelular, 
-			String novoEmail, String novaFoto) {
+
+	public boolean atualizarInfoContatoDoador(Doadores doadores, String novoCelular, String novoEmail,
+			String novaFoto) {
 		try {
 			em.getTransaction().begin();
 			doadores.setCelular(novoCelular);
@@ -172,9 +170,9 @@ public class DoadoresDAO {
 			return false;
 		}
 	}
-	
+
 	public boolean atualizarInfoAcessoDoador(Doadores doadores, String novoEmail, String novaSenha) {
-		novaSenha =  Criptografia.criptografar(novaSenha);
+		novaSenha = Criptografia.criptografar(novaSenha);
 
 		try {
 			em.getTransaction().begin();
@@ -190,5 +188,19 @@ public class DoadoresDAO {
 			return false;
 		}
 	}
-	
+
+	public boolean inserirVoluntario(Voluntariar voluntariar) {
+		try {
+			em.getTransaction().begin();
+			em.persist(voluntariar);
+			em.getTransaction().commit();
+			em.close();
+			factory.close();
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
+
 }

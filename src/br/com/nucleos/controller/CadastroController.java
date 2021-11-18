@@ -35,7 +35,7 @@ public class CadastroController extends HttpServlet {
 			senha =  Criptografia.criptografar(senha);
 			String registro_instituicao = request.getParameter("registro_instituicao3");
 			String telefone = request.getParameter("telefone3");
-			String img_src = "/NucleosApp/img/pet.jpg";
+			String img_src = "/NucleosApp/img/user.jpg";
 			String descricao = request.getParameter("descricao3");
 			String bairro = request.getParameter("bairro3");
 			int permissao = 3;
@@ -57,7 +57,7 @@ public class CadastroController extends HttpServlet {
 			senha =  Criptografia.criptografar(senha);
 			String cnpj = request.getParameter("cnpj2");
 			String telefone = request.getParameter("telefone2");
-			String img_src = "/NucleosApp/img/pet.jpg";
+			String img_src = "/NucleosApp/img/user.jpg";
 			String bairro = request.getParameter("bairro2");
 			int permissao = 2;
 			Empresas empresas = new Empresas(nome, email, senha, cnpj, telefone, img_src, bairro, permissao);
@@ -78,7 +78,7 @@ public class CadastroController extends HttpServlet {
 			senha =  Criptografia.criptografar(senha);
 			String cpf = request.getParameter("cpf1");
 			String celular = request.getParameter("celular1");
-			String img_src = "/NucleosApp/img/pet.jpg";
+			String img_src = "/NucleosApp/img/user.jpg";
 			String bairro = request.getParameter("bairro1");
 			int permissao = 1;
 			Doadores doadores = new Doadores(nome, sobrenome, email, senha, cpf, celular, img_src, bairro, permissao);

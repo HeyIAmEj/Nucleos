@@ -14,6 +14,7 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
+<title>Núcleos</title>
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <!-- Configura��o para mobile -->
@@ -109,8 +110,9 @@
 								<span class="card-title">${item.nome}</span>
 								<p>${item.descricao}</p>
 							</div>
-							<div class="card-action green-text">
+							<div class="col s12 card-action green-text">
 								<b><a class=" green-text" href="doar?id=${item.id}">Doar</a></b>
+								<!-- <b><a class=" green-text" href="voluntariar?id=${item.id}">Voluntariar</a></b> -->
 							</div>
 						</div>
 					</div>

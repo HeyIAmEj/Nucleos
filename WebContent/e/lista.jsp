@@ -14,6 +14,7 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
+<title>Núcleos</title>
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <!-- Configura��o para mobile -->
