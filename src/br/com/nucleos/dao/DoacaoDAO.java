@@ -50,14 +50,6 @@ public class DoacaoDAO {
 			TypedQuery<Doacao_Doadores> typedQuery = em.createQuery(jpql, Doacao_Doadores.class).setParameter("nome",
 					ong.getNome());
 			List<Doacao_Doadores> listaDoacao = typedQuery.getResultList();
-			/*
-			 * for (Doacao_Doadores doacao : listaDoacao) { System.out.println("Mensagem: "
-			 * + doacao.getMensagem()); System.out.println("Doador: " +
-			 * doacao.getFk_doadores_doacao_doadores()); System.out.println("Ong: " +
-			 * doacao.getFk_ong_doacao_doadores());
-			 * 
-			 * }
-			 */
 
 			em.close();
 			factory.close();
@@ -227,13 +219,25 @@ public class DoacaoDAO {
 	}
 
 
-	public static void main(String[] args) {
-		
-		/*
-		 * DoacaoDAO doacaoDao = new DoacaoDAO(); List<Doacao_Empresas> listaDoacao =
-		 * doacaoDao.getOnlyOngEmpresas(4); for(Doacao_Empresas de : listaDoacao) {
-		 * System.out.println(de.getDoacao()); }
-		 */
-	}
+	/*
+	 * public List<Doacao_Empresas> getTopEmpresas() {
+	 * 
+	 * try { em.getTransaction().begin(); String jpql =
+	 * "select de from Doacao_Empresas de"; TypedQuery<Doacao_Empresas> typedQuery =
+	 * em.createQuery(jpql, Doacao_Empresas.class); List<Doacao_Empresas>
+	 * listaDoacao = typedQuery.getResultList(); em.close(); factory.close();
+	 * 
+	 * return listaDoacao; } catch (NoResultException e) {
+	 * System.out.println("Esta retornando null"); return null; } }
+	 */
 
+	
+	/*
+	 * public static void main(String[] args) { DoacaoDAO doacaoDao = new
+	 * DoacaoDAO(); List<Doacao_Empresas> listaDoacao = doacaoDao.getTopEmpresas();
+	 * for(Doacao_Empresas de : listaDoacao) {
+	 * System.out.println(de.getFk_empresas_doacao_empresas());
+	 * 
+	 * } }
+	 */
 }

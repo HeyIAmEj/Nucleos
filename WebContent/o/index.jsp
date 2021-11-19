@@ -138,6 +138,32 @@
 					</div>
 				</div>
 				
+				<!-- EMPRESAS QUE MAIS DOAM -->
+				<div class="col s12 m6">
+					<div class="card hoverable">
+						<div class="card-image">
+							<img src="${item.img_src}">
+						</div>
+						<div class="card-content">
+							<span class="card-title center center-align">ONG #1</span>
+							<h1 class="center center-align">${qtdOngs }</h1>
+						</div>
+					</div>
+				</div>
+				
+				
+				<!-- USUARIOS QUE MAIS DOAM -->
+				<div class="col s12 m6">
+					<div class="card hoverable">
+						<div class="card-image">
+							<img src="${item.img_src}">
+						</div>
+						<div class="card-content">
+							<span class="card-title center center-align">EMPRESA #1</span>
+							<h1 class="center center-align">${qtdOngs }</h1>
+						</div>
+					</div>
+				</div>
 				
 			</div>
 		</div>

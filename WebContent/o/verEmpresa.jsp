@@ -23,6 +23,7 @@
 	$(document).ready(function() {
 		$('.sidenav').sidenav();
 		$('.tabs').tabs();
+	}
 </script>
 </head>
 
@@ -88,7 +89,7 @@
 								<h4>Email: ${email}</h4>
 								<h4>Celular: ${celular}</h4>
 								<h4>Localização: ${localizacao}</h4>
-								<a class="col s12 center center-align" href="https://api.whatsapp.com/send?phone=5581${celular}&text=Oi, somos da ${user.nome}! Vimos que você nos fez uma doação. Podemos bater um papo?"><img class="center center-align" src="/NucleosApp/img/whatsapp.png"/></a>
+								<a class="col s12 center center-align" href="https://api.whatsapp.com/send?phone=55${celular}&text=Oi, somos da ${user.nome}! Vimos que você nos fez uma doação. Podemos bater um papo?"><img class="center center-align" src="/NucleosApp/img/whatsapp.png"/></a>
 								<br/><br/><br/><br/><br/><br/>
 							</div>
 						</div>
