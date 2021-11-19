@@ -1,16 +1,14 @@
 package br.com.nucleos.dao;
 
+import java.util.ArrayList;
 import java.util.List;
-
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.NoResultException;
 import javax.persistence.Persistence;
 import javax.persistence.TypedQuery;
-
 import br.com.nucleos.controller.Criptografia;
 import br.com.nucleos.model.Doadores;
-import br.com.nucleos.model.Empresas;
 import br.com.nucleos.model.Voluntariar;
 
 public class DoadoresDAO {
@@ -202,5 +200,35 @@ public class DoadoresDAO {
 			return false;
 		}
 	}
+	
+	public boolean voluntariarAction(Voluntariar voluntariar) {
+		try {
+			em.getTransaction().begin();
+			em.persist(voluntariar);
+			em.getTransaction().commit();
+			em.close();
+			factory.close();
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
+	
+	public List<Voluntariar> getAllVoluntarios(int id) {
+		try {
+			em.getTransaction().begin();
+			String jpql = "select v from Voluntariar v where v.fk_ong_voluntariar = :id";
+			TypedQuery<Voluntariar> typedQuery = em.createQuery(jpql, Voluntariar.class).setParameter("id", id);
+			List<Voluntariar> listaVoluntarios = typedQuery.getResultList();
+			em.getTransaction().commit();
+			em.close();
+			factory.close();
+			return listaVoluntarios;
+		} catch (NoResultException e) {
+			return null;
+		}
+	}
+	
 
 }

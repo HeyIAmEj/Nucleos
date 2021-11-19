@@ -112,7 +112,7 @@
 							</div>
 							<div class="col s12 card-action green-text">
 								<b><a class=" green-text" href="doar?id=${item.id}">Doar</a></b>
-								<!-- <b><a class=" green-text" href="voluntariar?id=${item.id}">Voluntariar</a></b> -->
+								<b><a class=" green-text" href="voluntariar?id=${item.id}">Voluntariar</a></b>
 							</div>
 						</div>
 					</div>

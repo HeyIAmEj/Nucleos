@@ -24,6 +24,7 @@ import br.com.nucleos.model.Doadores;
 import br.com.nucleos.model.Empresas;
 import br.com.nucleos.model.Ong;
 import br.com.nucleos.model.Usuario;
+import br.com.nucleos.model.Voluntariar;
 
 @WebServlet({ "/LoginController", "/login.do", "/o/login.do", "/login" })
 public class LoginController extends HttpServlet {
@@ -81,6 +82,7 @@ public class LoginController extends HttpServlet {
 		
 		ArrayList<List<String>> newlistaDoacaoDoadores = new ArrayList<>();
 		ArrayList<List<String>> newlistaDoacaoEmpresas = new ArrayList<>();
+		ArrayList<List<String>> newlistaDoacaoVoluntarios = new ArrayList<>();
 
 		
 		if (ong != null) {
@@ -89,7 +91,26 @@ public class LoginController extends HttpServlet {
 			List<Doacao_Doadores> listaDoacao = doacaoDAO.getOnlyOngDoadores(ong.getId());
 			doacaoDAO = new DoacaoDAO();
 			List<Doacao_Empresas> listaDoacao2 = doacaoDAO.getOnlyOngEmpresas(ong.getId());
+			DoadoresDAO doadoresDAO1 = new DoadoresDAO();
+			List<Voluntariar> listaDoacao3 = doadoresDAO1.getAllVoluntarios(ong.getId());
 
+			
+			for(Voluntariar v : listaDoacao3) {
+				List union = new ArrayList();
+				DoadoresDAO doadoresDAO = new DoadoresDAO();
+				Doadores doadores = doadoresDAO.getDoadoresById(v.getFk_doadores_voluntariar());
+				
+				union.add(doadores.getNome());
+				union.add(ong.getNome());
+				union.add(v.getFuncao());
+				union.add(v.getDisponibilidade());
+				union.add(v.getCaracteristicas());
+				union.add(v.getDescricao());
+				union.add(v.getFk_doadores_voluntariar());
+	
+				newlistaDoacaoVoluntarios.add(union);
+			}
+			
 			for(Doacao_Doadores dd : listaDoacao) {
 				List union = new ArrayList();
 				DoadoresDAO doadoresDAO = new DoadoresDAO();
@@ -128,6 +149,7 @@ public class LoginController extends HttpServlet {
 			
 			
 			//System.out.println(newlistaDoacaoEmpresas);
+			session.setAttribute("listaVoluntarios", newlistaDoacaoVoluntarios);
 			session.setAttribute("listaOngDoacaoDoadores", newlistaDoacaoDoadores);
 			session.setAttribute("listaOngDoacaoEmpresas", newlistaDoacaoEmpresas);
 		}
